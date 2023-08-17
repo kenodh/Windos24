@@ -24,6 +24,67 @@
       color: white;
       font-size: 1.5em;
     }
+
+    .input-wrapper input {
+        background-color: #eee;
+        border: none;
+        padding: 1rem;
+        font-size: 1rem;
+        width: 13em;
+        border-radius: 1rem;
+        color: lightcoral;
+        box-shadow: 0 0.4rem #dfd9d9;
+        cursor: pointer;
+    }
+
+    .input-wrapper input:focus {
+        outline-color: lightcoral;
+    }
+
+.cookie-card {
+  border-radius: 15px;
+  width: 320px;
+  height: 200px;
+  background-color: #fff;
+}
+
+.wow {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start
+}
+
+.cookie-title {
+  font-size: 20px;
+  position: relative;
+  left: 90px;
+  top: 15px;
+  font-weight: bold;
+  color: rgb(31 41 55);
+}
+
+.cookie-description {
+  position: relative;
+  top: 25px;
+  font-size: 15px;
+  text-align: center;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: rgb(75 85 99);
+}
+
+.cookies-policy {
+  color: rgb(31 41 55);
+  text-decoration: underline;
+}
+
+.cookies-policy:hover {
+  text-decoration: none;
+}
+
+.cookies-policy:active {
+  color: rgba(31, 41, 55, 0.61);
+  ;
+}
     </style>
 </head>
 <body>
@@ -34,8 +95,36 @@
 <div id="player"></div>
 <script src="https://www.youtube.com/player_api"></script>
 <script src="https://www.youtube.com/iframe_api"></script>
+<br><br>
+<div class="input-wrapper">
+    <input type="text" placeholder="Current Programs" name="text" class="input">
+</div><br>
+
+<div class="wow">
+<div class="cookie-card" style="margin-right: 20px;">
+    <span class="cookie-title">Gumball</span>
+    <p class="cookie-description">
+        A 12-year-old cat, Gumball Watterson, stays in Elmore and has a penchant for getting into trouble along with his best friend, a fish named Darwin.</p>
+  </div>
 
 
+<div class="cookie-card" style="margin-right: 20px;">
+    <span class="cookie-title">The Garfield show</span>
+    <p class="cookie-description">Garfield is a fictional cat and the protagonist of the comic strip of the same name, created by Jim Davis. The comic strip centers on Garfield, portrayed as a lazy, fat, and cynical orange tabby Persian cat.</p>
+  </div>
+
+
+<div class="cookie-card" style="margin-right: 20px;">
+    <span class="cookie-title">SpongeBob</span>
+    <p class="cookie-description">A yellow sea sponge named SpongeBob SquarePants, who enjoys being a cook at Krusty Krab, lives in the Pacific Ocean. </p>
+  </div>
+
+
+<div class="cookie-card" style="margin-right: 20px;">
+    <span class="cookie-title">WB Kids</span>
+    <p class="cookie-description">Kids' WB was an American children's programming service and brand of The WB that aired on the network from September 9, 1995, to September 16, 2006.</p>
+  </div>
+</div>
 <script>
 // ["@TheAmazingWorldofGumball", "@thegarfieldshowofficial", "@SpongeBobOfficial", "@wbkids", "mychannel"]
 let ids = ["UCoBpC9J2EcbAMprw7YjC93A", "UCgDFVgTnw_W5DftgN2NQApQ", "UCx27Pkk8plpiosF14qXq-VA", "UC9trsD1jCTXXtN3xIOIU8gg", "UC9mA-wfjQUPbhfT8U2UfB0g"]; 
