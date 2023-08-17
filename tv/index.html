@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="js/jquery.js"></script>
+<style>
+    body {
+      background-image: url('p.jpeg');
+    }
+    </style>
+</head>
+<body>
+
+<img src="ti.png" style="width:1800px;height:130px;">
+
+
+<div id="player"></div>
+<script src="http://www.youtube.com/player_api"></script>
+<script src="http://www.youtube.com/iframe_api"></script>
+
+
+<script>
+// ["@TheAmazingWorldofGumball", "@thegarfieldshowofficial", "@SpongeBobOfficial", "@wbkids", "mychannel"]
+let ids = ["UCoBpC9J2EcbAMprw7YjC93A", "UCgDFVgTnw_W5DftgN2NQApQ", "UCx27Pkk8plpiosF14qXq-VA", "UC9trsD1jCTXXtN3xIOIU8gg", "UC9mA-wfjQUPbhfT8U2UfB0g"]; 
+
+var player;
+function onYouTubePlayerAPIReady() {
+    player = new YT.Player('player', {
+        width: '1500',
+        height: '600',
+        videoId: 'n9QvFCZlwJg',
+        events: {
+        onReady: onPlayerReady,
+        onStateChange: onPlayerStateChange,
+        onError: err
+        }
+    });
+}
+
+function err(event) {
+    console.log(event.data);
+}
+
+// autoplay video
+function onPlayerReady(event) {
+    event.target.playVideo();
+}
+
+// when video ends
+function onPlayerStateChange(event) {        
+    if(event.data === 0) {
+        getvidlink(ids[Math.floor(Math.random() * ids.length)])
+    }
+}
+
+function getvidlink(channelid){
+    let rrr = null;
+    $.ajax({
+        url: "https://www.googleapis.com/youtube/v3/search?key=AIzaSyAfceY5NRr4BYHGEjdx9LrQUa8lVSbuxhk&channelId=" + channelid + "&part=id,snippet&maxResults=50",
+        method: "GET",
+        success: function (response) {
+            let items = response.items;
+            let i = Math.floor(Math.random() * items.length);
+            let rand = items[i];
+            player.loadVideoById({videoId:rand.id.videoId,
+                      startSeconds:1,
+                      endSeconds:60});
+        }
+    });
+    
+}
+</script>
+
+</body>
+</html>
+
