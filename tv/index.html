@@ -85,12 +85,21 @@
   color: rgba(31, 41, 55, 0.61);
   ;
 }
+
+ul {
+  list-style: square;
+  color:aqua;
+}
     </style>
 </head>
 <body>
 
 <img src="ti.png" style="width:1800px;height:130px;"><br><br>
-<button><a href="mailto:tk@dhonek.com">Put Ads!</a></button><br><br>
+<button><a href="mailto:tk@dhonek.com">Put Ads!</a></button>
+<button><a id="downld" href="">Download telecast</a></button>
+<button onclick="savevid()">Save</button>
+<button><a href="mailto:tk@dhonek.com">Write a Review</a></button>
+<br><br>
 
 <div id="player"></div>
 <script src="https://www.youtube.com/player_api"></script>
@@ -125,16 +134,24 @@
     <p class="cookie-description">Kids' WB was an American children's programming service and brand of The WB that aired on the network from September 9, 1995, to September 16, 2006.</p>
   </div>
 </div>
+
+<div class="cookie-card" style="margin-right: 20px;">
+    <span class="cookie-title">Cartoon Network</span>
+    <p class="cookie-description">Cartoon Network (often abbreviated as CN) is an American cable television channel owned by Warner Bros. Discovery. It is a part of The Cartoon Network, Inc., a division that also has the broadcasting and production activities of Boomerang, Cartoonito, Adult Swim, and Toonami under its purview. </p>
+  </div>
+</div>
+<br><br>
+<h1 style="color: aqua;">Video List</h1>
+<ul id="list"></ul>
 <script>
 // ["@TheAmazingWorldofGumball", "@thegarfieldshowofficial", "@SpongeBobOfficial", "@wbkids", "mychannel"]
-let ids = ["UCoBpC9J2EcbAMprw7YjC93A", "UCgDFVgTnw_W5DftgN2NQApQ", "UCx27Pkk8plpiosF14qXq-VA", "UC9trsD1jCTXXtN3xIOIU8gg", "UC9mA-wfjQUPbhfT8U2UfB0g"]; 
-
+let ids = ["UCoBpC9J2EcbAMprw7YjC93A", "UCgDFVgTnw_W5DftgN2NQApQ", "UCx27Pkk8plpiosF14qXq-VA", "UC9trsD1jCTXXtN3xIOIU8gg", "UCQFWTMPoco9n8VJhcIzrF4g", "UCGydrkfIhUDNCotYQI8TJhA"]; 
 var player;
 function onYouTubePlayerAPIReady() {
     player = new YT.Player('player', {
         width: '1500',
         height: '600',
-        videoId: 'n9QvFCZlwJg',
+        videoId: 'TLwhqmf4Td4',
         events: {
         onReady: onPlayerReady,
         onStateChange: onPlayerStateChange,
@@ -149,7 +166,8 @@ function err(event) {
 
 // autoplay video
 function onPlayerReady(event) {
-    event.target.playVideo();
+  player.setPlaybackRate(1.25);
+  event.target.playVideo();
 }
 
 // when video ends
@@ -157,6 +175,14 @@ function onPlayerStateChange(event) {
     if(event.data === 0) {
         getvidlink(ids[Math.floor(Math.random() * ids.length)])
     }
+}
+
+function savevid(){
+  alert("Hint: Go to the bottom to see the your list!")
+  var ul = document.getElementById("list");
+  var li = document.createElement("li");
+  li.appendChild(document.createTextNode(player.getVideoUrl()));
+  ul.appendChild(li);
 }
 
 function getvidlink(channelid){
@@ -168,6 +194,8 @@ function getvidlink(channelid){
             let items = response.items;
             let i = Math.floor(Math.random() * items.length);
             let rand = items[i];
+            if(rand.id.videoId == "undifined" || rand.id.videoId == null){alert("Please Refresh.");}
+            document.getElementById("downld").setAttribute("href", "file:///work/programming/littleone/down.html?link=https://www.youtube.com/watch?v="+rand.id.videoId)
             player.loadVideoById({videoId:rand.id.videoId,
                       startSeconds:1,
                       endSeconds:60});
@@ -179,3 +207,4 @@ function getvidlink(channelid){
 
 </body>
 </html>
+<!-- https://dhonek.com/tv/down -->
