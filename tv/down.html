@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-alpha1/css/bootstrap.min.css">
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-alpha1/js/bootstrap.min.js"></script>
+</head>
+<body class="bg-light">
+  <div class="col-md-7 offset-md-3 mt-5">
+    <div class="card">
+      <div class="card-body">
+        <form class="form-download mt-3">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label class="text-weight"><b>Select Video Formate :</b></label>
+                <select class="form-control formte" required>
+                  <option selected disabled>Select Video Formate</option> 
+                  <option value="mp4a">144p Mp4</option>
+                  <option value="360">360p Mp4</option>
+                  <option value="480">480p Mp4</option>
+                  <option value="720">720p Mp4</option>
+                  <option value="1080">1080p Mp4</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group mt-4 download-video">
+                <button class="btn btn-success btn-block click-btn-down" type="submit">Click Here</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+<script type="text/javascript">
+  $(".click-btn-down").click(function(){
+    const urlParams = new URLSearchParams(window.location.search);
+    var link = urlParams.get('link')
+    var formate = $(".formte").children("option:selected").val();
+    var src =""+link+"="+formate+"";
+    downloadVideo(link,formate);
+  });
+  function downloadVideo(link,formate) {
+      $('.download-video').html('<iframe style="width:100%;height:60px;border:0;overflow:hidden;" scrolling="no" src="https://loader.to/api/button/?url='+link+'&f='+formate+'"></iframe>');
+  }
+</script>
+</html>
