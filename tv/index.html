@@ -196,7 +196,7 @@ function getvidlink(channelid){
             let items = response.items;
             let i = Math.floor(Math.random() * items.length);
             let rand = items[i];
-            if(!rand.id.videoId){alert("Please Refresh.");}
+            if(!rand || !rand.id){alert("Please Refresh.");}
             console.log(rand.id.videoId)
             document.getElementById("downld").setAttribute("href", "dhonek.com/tv/down.html?link=https://www.youtube.com/watch?v="+rand.id.videoId)
             player.loadVideoById({videoId:rand.id.videoId,
