@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -92,7 +93,7 @@ ul {
 }
     </style>
 </head>
-<body onload="onYouTubePlayerAPIReady()">
+<body >
 
 <img src="ti.png" style="width:1800px;height:130px;"><br><br>
 <button><a href="mailto:tk@dhonek.com">Put Ads!</a></button>
@@ -144,6 +145,7 @@ ul {
 <h1 style="color: aqua;">Video List</h1>
 <ul id="list"></ul>
 <script>
+    document.addEventListener('DOMContentLoaded', onYouTubePlayerAPIReady);
 // ["@TheAmazingWorldofGumball", "@thegarfieldshowofficial", "@SpongeBobOfficial", "@wbkids", "mychannel"]
 let ids = ["UCoBpC9J2EcbAMprw7YjC93A", "UCgDFVgTnw_W5DftgN2NQApQ", "UCx27Pkk8plpiosF14qXq-VA", "UC9trsD1jCTXXtN3xIOIU8gg", "UCQFWTMPoco9n8VJhcIzrF4g", "UCGydrkfIhUDNCotYQI8TJhA"]; 
 var player;
@@ -195,10 +197,12 @@ function getvidlink(channelid){
             let i = Math.floor(Math.random() * items.length);
             let rand = items[i];
             if(rand.id.videoId == "undifined" || rand.id.videoId == null){alert("Please Refresh.");}
-            document.getElementById("downld").setAttribute("href", "file:///work/programming/littleone/down.html?link=https://www.youtube.com/watch?v="+rand.id.videoId)
+            console.log(rand.id.videoId)
+            document.getElementById("downld").setAttribute("href", "dhonek.com/tv/down.html?link=https://www.youtube.com/watch?v="+rand.id.videoId)
             player.loadVideoById({videoId:rand.id.videoId,
                       startSeconds:1,
                       endSeconds:60});
+            
         }
     });
     
