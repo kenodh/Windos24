@@ -197,6 +197,7 @@ function getvidlink(channelid){
             let items = response.items;
             if(items.length == 0){
                 getvidlink(ids[Math.floor(Math.random() * ids.length)]);
+                return;
             }
             let i = Math.floor(Math.random() * items.length);
             let rand = items[i];
