@@ -194,6 +194,9 @@ function getvidlink(channelid){
         method: "GET",
         success: function (response) {
             let items = response.items;
+            if(items.length == 0){
+                getvidlink(ids[Math.floor(Math.random() * ids.length)]);
+            }
             let i = Math.floor(Math.random() * items.length);
             let rand = items[i];
             if(!rand || !rand.id){alert("Please Refresh.");}
