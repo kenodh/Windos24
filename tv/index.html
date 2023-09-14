@@ -164,7 +164,8 @@ function onYouTubePlayerAPIReady() {
 
 function err(event) {
     console.log(event.data);
-    alert("Please Refresh.");
+    {{/*  alert("Please Refresh.");  */}}
+    getvidlink(ids[Math.floor(Math.random() * ids.length)]);
 }
 
 // autoplay video
